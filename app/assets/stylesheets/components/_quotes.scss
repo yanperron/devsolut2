@@ -1,0 +1,22 @@
+.quote-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.quote-start{
+  align-self: flex-start;
+  padding-right: 10px;
+}
+.quote-end{
+  align-self: flex-end;
+  padding-left: 10px;
+}
+.quote-content{
+  flex-grow: 1;
+}
+.quote-tick{
+  color: $red;
+  font-size: 20px;
+}
+

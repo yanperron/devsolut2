@@ -1,0 +1,104 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center justify"><u> Informations sur votre agence : </u></h1>
+
+<div class="padded" background-color:"#E8E8E8">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-8" id="description">
+        <%= cl_image_tag @agency.photo, crop: "pad", class: "logo-md" %>
+      <p>
+      <strong> <u> Name: </u></strong>
+      <%= @agency.name %>
+      </p>
+
+      <p>
+      <strong> <u> Description:</u> </strong>
+      <%= @agency.description %>
+      </p>
+
+      <p>
+      <strong> <u> Address: </u> </strong>
+      <%= @agency.address %>
+      </p>
+
+
+      <p>
+      <strong> <u> Github info: </u> </strong>
+      <%= @agency.repos_public %>
+      <%= @agency.total_stars %>
+      <%= @agency.total_members %>
+      </p>
+
+      <p>
+      <strong><u> References: </u></strong>
+      </p>
+      <% @agency.references.each do |r| %>
+      <p> <%= r.name %> </p>
+      <p> <%= r.description %> </p>
+      <%= cl_image_tag r.photo, crop: :fill %>
+      <% end %>
+
+      <p>
+      <strong> <u> Reviews: </u> </strong>
+      </p>
+
+      <p> <%= @agency.review_mean.to_i.times do %>
+            <i class="fa fa-star"></i>
+      <% end %>
+      </p>
+
+
+      <div class="text-center" id="bottom-link">
+      <%= link_to 'Add a Review', new_agency_review_path(@agency) %> |
+      <%= link_to 'Add a Reference', new_agency_reference_path(@agency) %> |
+      <%= link_to 'Edit', edit_agency_path(@agency) %> |
+      <%= link_to 'Back', agencies_path %>
+      </div>
+
+      </div>
+      <div class="col-xs-12 col-md-4" id="description">
+        <div class ="padded-product text-center">
+          <%= link_to 'Ask for a quote', new_agency_quote_path(@agency), :class => "btn btn-danger" %>
+        </div>
+        <br>
+        <div class="col-xs-12 col-md-12" id="description">
+      <%= cl_image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@agency.address}&size=600x300&maptype=roadmap", class: "full" %>
+      </div>
+      </div>
+ </div>
+</div>
+
+
+<!-- ajouter l'img de la home = ligne/fleche orange -->
+ <div id="color">
+  <h3> Reviews </h3>
+  <%= image_tag('color-bar.png', class:"full" ) %>
+  </div>
+
+
+<!-- La carte -->
+
+<!-- <div class="padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+      <%= cl_image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@agency.address}&size=600x300&maptype=roadmap", class: "full" %>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Toutes les reviews -->
+
+<div class="container">
+  <div class="row">
+      <% @agency.reviews.each do |review| %>
+        <div class="col-xs-offset-2 col-xs-8">
+          <%= render 'agencies/review', :review => review %>
+        </div>
+      <% end %>
+  </div>
+</div>

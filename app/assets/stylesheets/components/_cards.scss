@@ -1,0 +1,56 @@
+.card-review{
+  position: relative;
+  height: 220px;
+}
+
+.card-avatar{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.card-star{
+  position: absolute;
+  top: 60px;
+  left: 10px;
+}
+
+.card-title{
+  position: absolute;
+  right: 10px;
+  top: 0px;
+}
+
+.card-quote{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.agency-card img{
+  max-width: 300px;
+  max-height: 100px;
+}
+
+.agency-card{
+  border: 1px solid $gray-lighter;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 1px 1px 1px #656565;
+}
+
+.agency-card:hover{
+  border: 1px solid $gray;
+}
+
+.agency-card a{
+    text-decoration: none !important;
+}
+
+
+.agency-card p{
+    text-decoration: none !important;
+}

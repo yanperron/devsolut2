@@ -1,0 +1,5 @@
+# config/meta.yml
+meta_title: "DEVSOLUT"
+meta_description: "Trouver les meilleures agences Web"
+meta_image: "metabanner.jpg" # Une image dans votre dossier app/assets/images/
+twitter_account: "@DEVSOLUT" # indispensable pour les Twitter Cards

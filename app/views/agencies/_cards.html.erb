@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="text-center uppercase">Nos derniers avis </h2>
+  <div class="row">
+    <% @agency.reviews.each do |review|%>
+    <div class="col-xs-12 col-md-4">
+      <div class="card-review">
+        <%= image_tag review.user.photo, class:"avatar card-avatar"  %>
+        <div class="card-star stars">
+          <% review.star.to_i.times do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+        </div>
+        <div class="card-title">
+          <h4><%= review.user.full_name %></h4>
+        </div>
+
+        <div class="card-quote">
+        <div class="quote-wrapper">
+          <p class="quote-start quote-tick">"</p>
+           <p class="quote-content"> <%= review.description %></p>
+           <p class="quote-end quote-tick">"</p>
+        </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
