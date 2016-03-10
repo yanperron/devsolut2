@@ -10,11 +10,8 @@ class Agency < ApplicationRecord
   has_many :linkedin_reports
   has_many :github_reports
 
-
-  after_create :enrich_github
-  after_create :enrich_linkedin
-
-
+  after_save :enrich_github
+  after_save :enrich_linkedin
 
   def review_mean
    if self.reviews.length == 0
