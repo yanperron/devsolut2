@@ -10,7 +10,12 @@ class AgenciesController < ApplicationController
   end
 
   def search
-    @agencies = Agency.where(description: params[:what])
+    condition = case params[:what]
+    when "web" then { does_web_development: true }
+    when "mobile" then { does_mobile_development: true }
+    else {}
+    end
+    @agencies = Agency.where(condition)
   end
 
   # GET /agencies/1
