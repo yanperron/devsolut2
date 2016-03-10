@@ -44,6 +44,13 @@
       <strong> <u> Reviews: </u> </strong>
       </p>
 
+
+      <% unless @linkedin_report.nil? %>
+        <% @linkedin_report.specialities_array.each do |speciality|%>
+          <div class="tag"> <%= speciality %> </div>
+        <% end %>
+      <% end %>
+
       <p> <%= @agency.review_mean.to_i.times do %>
             <i class="fa fa-star"></i>
       <% end %>
