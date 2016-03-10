@@ -31,14 +31,7 @@
       <%= @agency.total_members %>
       </p>
 
-      <p>
-      <strong><u> References: </u></strong>
-      </p>
-      <% @agency.references.each do |r| %>
-      <p> <%= r.name %> </p>
-      <p> <%= r.description %> </p>
-      <%= cl_image_tag r.photo, crop: :fill %>
-      <% end %>
+
 
       <p>
       <strong> <u> Reviews: </u> </strong>
@@ -56,6 +49,10 @@
       <% end %>
       </p>
       </div>
+      <div class="padded-agency">
+
+</div>
+
 
 
 
@@ -77,6 +74,19 @@
       <%= link_to 'Edit', edit_agency_path(@agency) %> |
       <%= link_to 'Back', agencies_path %>
       </div>
+
+        <div class="container padded">
+    <h2 class="text-center uppercase"> References:</h2>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <% @agency.references.each do |r| %>
+      <p> <%= r.name %> </p>
+      <p> <%= r.description %> </p>
+      <%= cl_image_tag(r.photo, width: 400, height: 300, crop: :fill)%>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
 
 <%= image_tag('color-bar.png', class:"full") %>
