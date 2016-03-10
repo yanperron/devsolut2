@@ -1,0 +1,8 @@
+<div class="agency-card">
+  <%= cl_image_tag(references.photo, height: 100, crop: :pad)  unless references.photo.nil? %>
+  <hr class="separator-card">
+  <h2><%= references.name %></h2>
+  <p>
+    <%= references.description %>
+  </p>
+</div>
