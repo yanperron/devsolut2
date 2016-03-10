@@ -1,6 +1,7 @@
 .card-review{
   position: relative;
   height: 220px;
+  width:350px;
 }
 
 .card-avatar{
@@ -27,30 +28,64 @@
   right: 10px;
 }
 
+
+
+
 .agency-card img{
   max-width: 300px;
-  max-height: 100px;
+  max-height: 200px;
 }
 
 .agency-card{
-  border: 1px solid $gray-lighter;
+  background-color: #F7F7F7;
+  border: 1px solid #cfcfcf;
   margin: 10px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
+  box-shadow: 0 0 1px #cfcfcf;
   text-align: center;
-  background-color: white;
-  box-shadow: 1px 1px 1px #656565;
+  width: 350px;
+  height: 280px;
 }
 
 .agency-card:hover{
-  border: 1px solid $gray;
+  border: 3px solid #fe5f55;
 }
 
 .agency-card a{
     text-decoration: none !important;
 }
 
+.agency-card a:hover{
+  text-decoration: none;
+}
+
+.separator-card{
+  border-color: #fe5f55;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.agency-card h2 {
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: #6f6e74;
+  height: 30px;
+}
 
 .agency-card p{
-    text-decoration: none !important;
+  text-decoration: none !important;
+  color: #9a9898;
+  font-size: 15px;
+  margin-bottom: 25px;
+  font-weight: lighter;
 }
+
+.agency-card p:hover{
+  text-decoration: none;
+}
+
+
+
+

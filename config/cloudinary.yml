@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: roritobach
+  api_key: '823931488395973'
+  api_secret: j-pKqHfZZrNnMw3C4J9KevYY_2Q
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: roritobach
+  api_key: '823931488395973'
+  api_secret: j-pKqHfZZrNnMw3C4J9KevYY_2Q
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: roritobach
+  api_key: '823931488395973'
+  api_secret: j-pKqHfZZrNnMw3C4J9KevYY_2Q
+  enhance_image_tag: true
+  static_image_support: false

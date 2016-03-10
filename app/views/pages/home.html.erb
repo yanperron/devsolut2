@@ -58,13 +58,13 @@
 
 <!-- Top des agences -->
 
-<div class="padded">
+<div class="padded-agency">
   <div class="container">
-    <h2 class="text-center uppercase">Nos agences </h2>
+    <h2 class="text-center uppercase">Nos agences</h2>
     <div class="row">
       <% @agencies.each do |agency|%>
       <div class="col-xs-12 col-md-4">
-        <%= render "agencies/agency", agency: agency %>
+             <%= render "agencies/agency", :agency => agency %>
       </div>
       <% end %>
     </div>
