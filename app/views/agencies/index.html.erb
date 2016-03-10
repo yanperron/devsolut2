@@ -11,7 +11,10 @@
     </div>
       <% @agencies.each do |agency| %>
         <div class="col-xs-12 col-md-4">
+        <%= link_to agency_path(agency) do %>
+
           <%= render "agencies/agency", :agency => agency %>
+          <% end %>
         </div>
       <% end %>
     </div>

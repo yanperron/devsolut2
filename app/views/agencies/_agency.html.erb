@@ -1,9 +1,10 @@
-<%= link_to agency_path(agency) do %>
 
   <div class="agency-card">
     <%= cl_image_tag agency.photo, height:  100, crop: :pad %>
 
-    <h2><%= agency.name %></h2>
+    <hr class="separator-card">
+          <h2><%= agency.name %></h2>
+
     <p> <%= agency.short_description %></p>
     <div class="stars">
       <% agency.review_mean.to_i.times do %>
@@ -11,6 +12,3 @@
       <% end %>
     </div>
   </div>
-
-
- <% end %>
