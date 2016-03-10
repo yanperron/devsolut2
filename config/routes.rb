@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     resources :quotes, only: [:new, :create]
   end
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+
 #  require "sidekiq/web"
 #  authenticate :user, lambda { |u| u.admin } do
 #    mount Sidekiq::Web => '/sidekiq'

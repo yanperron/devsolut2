@@ -38,7 +38,7 @@ class Agency < ApplicationRecord
 
   def enrich_github
     if self.github_account
-      GithubEnrichmentJob.perform_now(self.id)
+      GithubEnrichmentJob.perform_later(self.id)
     end
   end
 
@@ -46,7 +46,7 @@ class Agency < ApplicationRecord
 
   def enrich_linkedin
     if self.linkedin_account
-      LinkedinEnrichmentJob.perform_now(self.id)
+      LinkedinEnrichmentJob.perform_later(self.id)
     end
   end
 

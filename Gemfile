@@ -21,6 +21,9 @@ gem 'carrierwave'
 gem 'nokogiri'
 gem 'activeadmin', '~> 1.0.0.pre2'
 
+gem 'sidekiq'
+gem 'sinatra', github: 'sinatra'
+gem 'sidekiq-failures'
 
 group :development, :test do
   gem 'binding_of_caller'
