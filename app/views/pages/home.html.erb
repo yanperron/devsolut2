@@ -64,7 +64,7 @@
     <div class="row">
       <% @agencies.each do |agency|%>
         <div class="col-xs-12 col-md-4">
-          <%= link_to agency_path(agency) do %>
+          <%= link_to agency_path(agency), class: 'link-agency-card' do %>
             <%= render "agencies/agency", :agency => agency %>
           <% end %>
         </div>
