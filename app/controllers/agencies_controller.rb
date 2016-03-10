@@ -74,7 +74,7 @@ class AgenciesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def agency_params
-      params.require(:agency).permit(:name, :description, :address, :user_id, :where, :photo, :photo_cache)
+      params.require(:agency).permit(:name, :description, :address, :user_id, :where, :photo, :photo_cache, :linkedin_account, :github_account)
     end
 
 end

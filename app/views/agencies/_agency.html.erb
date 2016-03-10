@@ -1,7 +1,7 @@
 <%= link_to agency_path(agency) do %>
 
   <div class="agency-card">
-    <%= cl_image_tag agency.photo, height:  100, crop: :pad %>
+    <%= cl_image_tag(agency.photo, height:  100, crop: :pad)  unless agency.photo.nil? %>
 
     <h2><%= agency.name %></h2>
     <p> <%= agency.short_description %></p>
