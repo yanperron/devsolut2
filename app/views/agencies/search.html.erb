@@ -7,23 +7,17 @@
 <% else %>
   <div class="padded">
     <h1 class="text-center">Vos agences :</h1>
-    <% @agencies.each do |agency| %>
-      <%= link_to agency_path(agency), class: 'link-agency-card' do %>
-        <div class="agency-card">
-          <%= cl_image_tag agency.photo, width: 300, height:  100, crop: :pad %>
-          <h2><%= agency.name %></h2>
-          <p>
-            <%= agency.short_description %>
-          </p>
-          <div class="stars">
-            <% agency.review_mean.to_i.times do %>
-              <i class="fa fa-star"></i>
-            <% end %>
-          </div>
+      <div class="container">
+        <div class="row">
+          <% @agencies.each do |agency| %>
+            <div class="col-xs-12 col-md-4">
+              <%= link_to agency_path(agency), class: 'link-agency-card' do %>
+              <%= render "agencies/agency", :agency => agency %>
+            </div>
         </div>
+      </div>
       <% end %>
     <% end %>
-    </div>
   </div>
 <% end %>
 

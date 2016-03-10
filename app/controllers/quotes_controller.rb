@@ -1,4 +1,5 @@
 class QuotesController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :set_agency, only: [:new, :create]
 
   # GET /quotes/new
@@ -10,7 +11,7 @@ class QuotesController < ApplicationController
   def create
     @quote = @agency.quotes.new(quote_params)
     if @quote.save!
-      redirect_to @quote.agency, notice: 'Quote was successfully recorded.'
+      redirect_to @quote.agency, notice: 'Votre devis a été envoyé avec succès'
     else
       render @agency
     end

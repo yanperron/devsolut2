@@ -1,13 +1,26 @@
-<%= simple_form_for [@agency, @quote] do |f| %>
-  <%= f.error_notification %>
+<div class="padded">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <%= simple_form_for [@agency, @quote] do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id.to_s } %>
-    <%= f.input :titre %>
-    <%= f.input :description %>
-  </div>
+      <div class="form-inputs">
+        <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id.to_s } %>
+        <%= f.input :titre, label: "Projet" %>
+        <%= f.input :description, label: "Cahier des charges" %>
+      </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+      <div class="form-actions">
+        <%= link_to 'Back', agencies_path(@agency), class: 'btn btn-danger' %>
+
+        <%= f.button :submit, value: "Envoyer", class: "pull-right btn btn-success" %>
+      </div>
+    <% end %>
+
+
+    </div>
   </div>
-<% end %>
+</div>
+
+</div>
