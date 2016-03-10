@@ -8,6 +8,7 @@
 
 
 # Seed user
+Review.destroy_all
 User.destroy_all
 user1 = User.create!(email:"admin@admin.com", password: "admin@admin.com", photo: "http://t0.gstatic.com/images?q=tbn:ANd9GcQ4fto24q0e4zt_rsUjcIFmZ3SsnWEbeizSl0f4u69vjqP3dd8dksN8kWA", admin: true)
 user2 = User.create!(email:"exemple@admin.com", password: "12345678", photo: "http://t0.gstatic.com/images?q=tbn:ANd9GcQ4fto24q0e4zt_rsUjcIFmZ3SsnWEbeizSl0f4u69vjqP3dd8dksN8kWA")
@@ -21,7 +22,6 @@ agency1 = Agency.create!(name:"Le Wagon", user: user1,  description: "trop cool"
 agency1 = Agency.create!(name:"BFR", user: user1,  description: "trop cool", github_account: '', linkedin_account: '' )
 
 
-Review.destroy_all
 review1 = Review.create!(description: "Très satisfait de la prestation ! Une équipe sympa, dynamique et efficace. Très bénéfique pour mon entreprise.", agency: agency1, user: user2, star: 3)
 review2 = Review.create!(description: "Entreprise jeune et dynamique, à l’écoute du client. Également disponible pour le suivi ou les modifications à apporter sur le site.", agency: agency1, user: user2, star: 5)
 review3 = Review.create!(description: "Entreprise jeune et dynamique, à l’écoute du client. Également disponible pour le suivi ou les modifications à apporter sur le site.", agency: agency1, user: user2, star: 1)
