@@ -1,18 +1,16 @@
 class AgenciesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:compare, :index, :show]
+  skip_before_action :authenticate_user!, only: [:compare, :index, :show, :search]
 
   before_action :set_agency, only: [:show, :edit, :update, :destroy]
 
   # GET /agencies
   def index
     @agencies = Agency.all
-
   end
 
   def search
-    @agencies = Agency.where("description = ?", params[:what])
-
+    @agencies = Agency.where(description: params[:what])
   end
 
   # GET /agencies/1

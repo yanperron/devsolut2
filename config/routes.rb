@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :agencies do
     collection do
-      get "compare", to: "agencies#compare"
-      get 'search', to: "agencies#search"
-      post 'search', to: "agencies#search"
-
+      get "compare"
+      get 'search'
     end
     resources :reviews, only: [:new, :create]
     resources :references, only: [:new, :create]

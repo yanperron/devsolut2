@@ -3,10 +3,10 @@
           <h1>Trouvez les meilleures agences webs</h1>
 
 <!-- Formulaire à refactoriser avec un form_tag -->
-        <%= form_tag search_agencies_path do %>
-        <%= select_tag "agency[where]", options_for_select([ "France", "Ile de France" ], "France"),  class: "form-control btn btn-danger dropdown-toggle" %>
-        <%= select_tag "agency[what]", options_for_select([ "Developpement web", "Developpement mobile" ], "Developpement web"), class: "form-control btn btn-danger dropdown-toggle" %>
-        <%= button_tag "Trouver", class: "btn btn-default btn-lg btn-block" %>
+        <%= form_tag search_agencies_path, method: :get, class: 'form-inline'  do %>
+        <%= select_tag "where", options_for_select([ "France", "Ile de France" ], "France"),  class: "form-control dropdown-toggle" %>
+        <%= select_tag "what", options_for_select([ "Developpement web", "Developpement mobile" ], "Developpement web"), class: "form-control dropdown-toggle" %>
+        <%= button_tag "Trouver", class: "btn btn-primary" %>
         <% end %>
 <!-- end -->
 
@@ -63,9 +63,11 @@
     <h2 class="text-center uppercase">Nos agences</h2>
     <div class="row">
       <% @agencies.each do |agency|%>
-      <div class="col-xs-12 col-md-4">
-             <%= render "agencies/agency", :agency => agency %>
-      </div>
+        <div class="col-xs-12 col-md-4">
+          <%= link_to agency_path(agency) do %>
+            <%= render "agencies/agency", :agency => agency %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
