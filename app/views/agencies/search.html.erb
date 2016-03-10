@@ -1,29 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-
-
-
-
-<div class="padded">
-<h1 class="text-center">Vos agences :</h1>
-<div class="agency-card">
-  <% @agencies.each do |agency| %>
-  <%= cl_image_tag agency.photo, width: 300, height:  100, crop: :pad %>
-  <h2><%= agency.name %></h2>
-  <p> <%= agency.short_description %></p>
-  <div class="stars">
-    <% agency.review_mean.to_i.times do %>
-      <i class="fa fa-star"></i>
+<% if @agencies.blank? %>
+  <p class="padded text-center">
+    Désolé, aucune agence ne correspond à votre recherche.
+  </p>
+<% else %>
+  <div class="padded">
+    <h1 class="text-center">Vos agences :</h1>
+    <% @agencies.each do |agency| %>
+      <%= link_to agency_path(agency), class: 'link-agency-card' do %>
+        <div class="agency-card">
+          <%= cl_image_tag agency.photo, width: 300, height:  100, crop: :pad %>
+          <h2><%= agency.name %></h2>
+          <p>
+            <%= agency.short_description %>
+          </p>
+          <div class="stars">
+            <% agency.review_mean.to_i.times do %>
+              <i class="fa fa-star"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
-</div>
-
-
-
-
-<br>
-
-<%= link_to 'New Agency', new_agency_path %>
+<%# link_to 'New Agency', new_agency_path %>
