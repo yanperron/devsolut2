@@ -19,7 +19,11 @@ gem 'autoprefixer-rails'
 gem 'cloudinary'
 gem 'carrierwave'
 gem 'nokogiri'
-gem 'activeadmin', '~> 1.0.0.pre2'
+
+# ActiveAdmin needs a newer version of Kaminari to fix this:
+# http://stackoverflow.com/questions/34413971/rails-5-0-0-beta1-generating-an-url-from-non-sanitized-request-parameters-is-i
+gem 'activeadmin', github: 'yanperron/activeadmin'
+gem 'kaminari', github: 'amatsuda/kaminari'
 
 gem 'sidekiq'
 gem 'sinatra', github: 'sinatra'
