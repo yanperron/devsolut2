@@ -56,17 +56,17 @@ class GithubApiService
 
   def organisation_data
     api_url = @base_url.gsub(/:path/, "")
-    @organisation_data = open_and_parse(api_url)
+    @organisation_data = open_and_parse(api_url) || []
   end
 
   def member_data
     api_url = @base_url.gsub(/:path/, "/members")
-    @member_data = open_and_parse(api_url)
+    @member_data = open_and_parse(api_url) || []
   end
 
   def repos_data
     api_url = @organisation_data["repos_url"]
-    @repos_data = open_and_parse(api_url)
+    @repos_data = open_and_parse(api_url) || []
   end
 
   def extract_account_from_url(url)
