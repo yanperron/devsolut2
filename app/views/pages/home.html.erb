@@ -62,7 +62,7 @@
   <div class="container">
     <h2 class="text-center uppercase with-margin">Nos agences</h2>
     <div class="row">
-      <% @agencies[0...3].each do |agency|%>
+      <% @agencies.each do |agency|%>
         <div class="col-xs-12 col-md-4">
           <%= link_to agency_path(agency), class: 'link-agency-card' do %>
             <%= render "agencies/agency", :agency => agency %>
