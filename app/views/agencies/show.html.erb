@@ -46,32 +46,34 @@
     </div>
     <div class="text-center" id="bottom-link">
       <% if current_user %>
-        <%= link_to 'Ajouter un avis', new_agency_review_path(@agency), class: " btn btn-danger " %> |
-        <%= link_to 'Ajouter une référence', new_agency_reference_path(@agency), class: " btn btn-danger " %> |
+        <%= link_to 'Ajouter un avis', new_agency_review_path(@agency) %> ou
+        <%= link_to 'ajouter une référence', new_agency_reference_path(@agency) %>
         <% end %>
     </div>
 
-    <div class="padded">
-      <h2 class="text-center uppercase"> References :</h2>
-      <div class="row">
-
-        <% @agency.references.each do |r| %>
-         <div class="col-xs-12 col-md-4">
-          <%= render 'agencies/references', :references => r %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-
-    <% if  @agency.reviews.length > 0  %>
-      <div class="row">
-        <h3> Reviews </h3>
-          <% @agency.reviews.each do |review| %>
-          <div class="col-xs-offset-2 col-xs-8">
-            '<%= render 'agencies/review', :review => review %>'
-          </div>
+    <% if @agency.references.any? %>
+      <div class="padded">
+        <h3 class="text-center uppercase with-margin"> References</h3>
+        <div class="row">
+         <% @agency.references.each do |r| %>
+           <div class="col-xs-12 col-md-4">
+            <%= render 'agencies/references', :references => r %>
+            </div>
           <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @agency.reviews.any?  %>
+      <div class="padded">
+        <h3 class="text-center uppercase with-margin"> Avis </h3>
+        <div class="row">
+          <% @agency.reviews.each do |review| %>
+            <div class="col-xs-4">
+              <%= render 'reviews/review_card', review: review %>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
 

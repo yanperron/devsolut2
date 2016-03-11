@@ -11,9 +11,7 @@ class User < ApplicationRecord
 
 
   def full_name
-    first_name = self.first_name.nil? ? '' :self.first_name.capitalize
-    last_name = self.last_name.nil? ? '' :self.last_name.capitalize
-    return "#{first_name.capitalize} #{last_name.capitalize} "
+    "#{first_name.try(:capitalize)} #{last_name.try(:capitalize)} "
   end
 
 end

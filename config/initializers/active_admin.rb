@@ -3,6 +3,9 @@ def authenticate_admin!
   redirect_to new_user_session_path unless current_user && current_user.admin
 end
 
+class InetInput < Formtastic::Inputs::TextInput
+end
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
