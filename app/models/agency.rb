@@ -34,15 +34,14 @@ class Agency < ApplicationRecord
 
 
   def enrich_github
-    if self.github_account
+    unless self.github_account.nil?
       GithubEnrichmentJob.perform_later(self.id)
     end
   end
 
 
-
   def enrich_linkedin
-    if self.linkedin_account
+    unless self.linkedin_account.nil?
       LinkedinEnrichmentJob.perform_later(self.id)
     end
   end
