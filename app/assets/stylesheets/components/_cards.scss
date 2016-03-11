@@ -38,17 +38,17 @@
 
 .agency-card{
   background-color: white;
-  border: 3px solid #cfcfcf;
+  border: 1px solid $gray-lighter;
   margin: 10px;
   padding: 10px;
   border-radius: 3px;
   box-shadow: 0 0 1px #cfcfcf;
   text-align: center;
-  min-height: 280px;
+  min-height: 300px;
 }
 
 .agency-card:hover{
-  border: 3px solid #fe5f55;
+  border: 1px solid $gray-light;
 }
 
 a.link-agency-card {
@@ -69,11 +69,11 @@ a.link-agency-card {
   margin-right: 30px;
 }
 
-.agency-card h2 {
-  font-size: 20px;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  color: #6f6e74;
+.agency-card h2{
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  color: $gray;
 }
 
 .agency-card p{

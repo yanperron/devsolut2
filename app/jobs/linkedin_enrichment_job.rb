@@ -10,6 +10,7 @@ class LinkedinEnrichmentJob < ApplicationJob
     api = LinkedinApiService.new(linkedin_account)
 
     report = LinkedinReport.new
+    report.save
     report.agency = agency
     report.size = api.company_size
     report.specialities = api.specialities.join(",")

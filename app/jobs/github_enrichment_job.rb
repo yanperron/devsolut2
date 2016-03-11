@@ -13,6 +13,7 @@ class GithubEnrichmentJob < ApplicationJob
      api = GithubApiService.new(github_account)
 
     report = GithubReport.new
+    report.save
     report.agency = agency
     report.repos_public = api.repos_public
     report.total_stars = api.total_stars

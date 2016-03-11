@@ -1,7 +1,15 @@
-<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+         <li> <%= link_to "Accueil", root_path %> </li>
+         <li class=""><%= link_to "Toutes les agences", agencies_path  %> </li>
+         <li class="active"><%= @agency.name%></li>
+</ol>
+
+
 <h1 class="text-center justify"></h1>
+
 <div background-color:"#E8E8E8">
   <div class="container">
+
     <div class="row">
       <div class="col-xs-12 col-md-8" id="description">
         <%= cl_image_tag @agency.photo, crop: "pad", class: "logo-md pull-right" %>
@@ -9,30 +17,17 @@
           <%= @agency.name %>
         </p>
         <p>
-          <strong> <u> Description:</u> </strong>
           <%= @agency.description %>
         </p>
-        <p>
-          <strong> <u> Address: </u> </strong>
-          <%= @agency.address %>
-        </p>
-        <p>
-          <strong> <u> Github info: </u> </strong>
-          <%= @agency.repos_public %>
-          <%= @agency.total_stars %>
-          <%= @agency.total_members %>
-        </p>
-        <p>
-          <strong> <u> Reviews: </u> </strong>
-        </p>
+
         <% unless @linkedin_report.nil? %>
-        <% @linkedin_report.specialities_array.each do |speciality|%>
-        <div class="tag"> <%= speciality %> </div>
+          <% @linkedin_report.specialities_array.each do |speciality|%>
+          <div class="tag"> <%= speciality %> </div>
         <% end %>
         <% end %>
         <p>
-          <%= @agency.review_mean.to_i.times do %>
-          <i class="fa fa-star"></i>
+          <% @agency.review_mean.to_i.times do %>
+            <i class="fa fa-star"></i>
           <% end %>
         </p>
       </div>
@@ -50,44 +45,39 @@
       </div>
     </div>
     <div class="text-center" id="bottom-link">
-      <%= link_to 'Add a Review', new_agency_review_path(@agency) %> |
-      <%= link_to 'Add a Reference', new_agency_reference_path(@agency) %> |
-      <%= link_to 'Edit', edit_agency_path(@agency) %> |
-      <%= link_to 'Back', search_agencies_path %>
+      <% if current_user %>
+        <%= link_to 'Ajouter un avis', new_agency_review_path(@agency), class: " btn btn-danger " %> |
+        <%= link_to 'Ajouter une référence', new_agency_reference_path(@agency), class: " btn btn-danger " %> |
+        <% end %>
     </div>
-    <div class="container padded">
+
+    <div class="padded">
       <h2 class="text-center uppercase"> References :</h2>
       <div class="row">
+
         <% @agency.references.each do |r| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+         <div class="col-xs-12 col-md-4">
           <%= render 'agencies/references', :references => r %>
-        </div>
+          </div>
         <% end %>
       </div>
     </div>
-  </div>
-  <%= image_tag('color-bar.png', class:"full") %>
-  <div id="color">
-    <h3> Reviews </h3>
-  </div>
-  <!-- La carte -->
-  <!-- <div class="padded">
-    <div class="container">
+
+
+    <% if  @agency.reviews.length > 0  %>
       <div class="row">
-        <div class="col-xs-12">
-          <%= cl_image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@agency.address}&size=600x300&maptype=roadmap", class: "full" %>
-        </div>
+        <h3> Reviews </h3>
+          <% @agency.reviews.each do |review| %>
+          <div class="col-xs-offset-2 col-xs-8">
+            '<%= render 'agencies/review', :review => review %>'
+          </div>
+          <% end %>
       </div>
-    </div>
-  </div> -->
-  <!-- Toutes les reviews -->
-  <div class="container">
-    <div class="row">
-      <% @agency.reviews.each do |review| %>
-      <div class="col-xs-offset-2 col-xs-8">
-        '<%= render 'agencies/review', :review => review %>'
-      </div>
-      <% end %>
-    </div>
+    <% end %>
+
+
+
   </div>
-</div>
+  </div>
+
+
