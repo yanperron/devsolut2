@@ -6,13 +6,13 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id.to_s } %>
+        <%= f.input :email, label: "Votre email", placeholder: 'zuck@facebook.com' %>
         <%= f.input :titre, label: "Projet" %>
         <%= f.input :description, label: "Cahier des charges" %>
       </div>
 
       <div class="form-actions">
-        <%= link_to 'Back', agencies_path(@agency), class: 'btn btn-danger' %>
+        <%= link_to 'Annuler', agencies_path(@agency), class: 'btn btn-danger' %>
 
         <%= f.button :submit, value: "Envoyer", class: "pull-right btn btn-success" %>
       </div>
