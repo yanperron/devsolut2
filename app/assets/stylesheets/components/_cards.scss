@@ -1,35 +1,16 @@
 .card-review{
-  position: relative;
-  height: 220px;
-  width:350px;
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  width: 350px;
+  justify-content: space-between;
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
-
-.card-avatar{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.card-star{
-  position: absolute;
-  top: 60px;
-  left: 10px;
-}
-
-.card-title{
-  position: absolute;
-  right: 10px;
-  top: 0px;
-}
-
-.card-quote{
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
-
-
-
 
 .agency-card img{
   max-width: 200px;
