@@ -6,7 +6,7 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id.to_s } %>
+        <%= f.input :email, label: "Votre email", placeholder: 'zuck@facebook.com' %>
         <%= f.input :titre, label: "Projet" %>
         <%= f.input :description, label: "Cahier des charges" %>
       </div>
