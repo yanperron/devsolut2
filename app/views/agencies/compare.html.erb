@@ -1,1 +1,28 @@
 <h1>comparaison</h1>
+
+<div class="container">
+
+<div class="row">
+      <div class="col-xs-12 col-md-4">
+
+
+
+  <% @agencies_selected.each do |agency| %>
+
+    <%= agency.name %>
+    <%= agency.repos_public %>
+    <%= agency.total_stars%>
+    <%= agency.total_members%>
+    <% agency.references.each do |r| %>
+    <%= cl_image_tag(r.photo, width: 400, height: 300, crop: :fill)%>
+
+     <% end %>
+  <% end %>
+
+</div>
+
+</div>
+</div>
+
+
+

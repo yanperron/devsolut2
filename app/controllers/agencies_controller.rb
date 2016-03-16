@@ -6,14 +6,32 @@ class AgenciesController < ApplicationController
 
   # GET /agencies
   def index
-    @agencies = Agency.all
+
+    search_params = session['search_params']
+@agencies_selected = []
+
+unless search_params.nil?
+  @agencies_selected = search_params['agencies'].reject{|k,v| v == "0"}.keys if search_params['agencies']
+end
+   @agencies = Agency.all
+
+
+
+
+
 
   end
 
   def search
+
+
+
     @agencies = Agency.where("description = ?", params[:what])
 
+
   end
+
+
 
   # GET /agencies/1
   def show
@@ -53,12 +71,13 @@ class AgenciesController < ApplicationController
   end
 
   def compare
-    ids = params[:ids].split(',')
-    @agencies = []
-    ids.each do |id|
-      @agencies << Agency.find(id)
+
+    redirect_to @agencies_selected
+
     end
-  end
+
+
+
 
   # DELETE /agencies/1
   def destroy

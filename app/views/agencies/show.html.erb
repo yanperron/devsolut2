@@ -62,10 +62,10 @@
 </div>
 
       <div class="text-center" id="bottom-link">
-      <%= link_to 'Add a Review', new_agency_review_path(@agency) %> |
-      <%= link_to 'Add a Reference', new_agency_reference_path(@agency) %> |
-      <%= link_to 'Edit', edit_agency_path(@agency) %> |
-      <%= link_to 'Back', agencies_path %>
+      <%= link_to 'Add a Review', new_agency_review_path(@agency), class: "btn btn-danger" %> |
+      <%= link_to 'Add a Reference', new_agency_reference_path(@agency), class: "btn btn-danger" %> |
+      <%= link_to 'Edit', edit_agency_path(@agency), class: "btn btn-danger" %> |
+      <%= link_to 'Back', agencies_path, class: "btn btn-danger" %>
       </div>
 
         <div class="container padded">

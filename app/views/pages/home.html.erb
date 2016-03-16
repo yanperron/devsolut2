@@ -62,7 +62,7 @@
   <div class="container">
     <h2 class="text-center uppercase">Nos agences</h2>
     <div class="row">
-      <% @agencies.each do |agency|%>
+      <% @agencies[0...3].each do |agency|%>
       <div class="col-xs-12 col-md-4">
              <%= render "agencies/agency", :agency => agency %>
       </div>
