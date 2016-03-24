@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   resources :agencies do
     collection do
       get "compare", to: "agencies#compare"
+      post "compare", to: "agencies#compare"
       get 'search', to: "agencies#search"
       post 'search', to: "agencies#search"
+      get 'show_more', to: "agencies#show_more"
+      post 'show_more', to: "agencies#show_more"
+
 
     end
     resources :reviews, only: [:new, :create]

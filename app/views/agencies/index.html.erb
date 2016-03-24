@@ -24,9 +24,10 @@
 
   <br>
 
+
 <div class="container">
         <div class="row">
-          <% Agency.all.each do |agency| %>
+          <% @agencies.each do |agency| %>
               <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="card-look" >
                   <div class="card-name"><%= agency.name %> </div>
@@ -49,6 +50,8 @@
 
 
 
+
+
     <% content_for :after_js do %>
     <script>
       $(function(){
@@ -57,18 +60,16 @@
           var el = $(this).children('input[type=hidden]');
           el.val(el.val() == 0 ? 1 : 0);
         });
-
         $(".card-look").on("mouseover", function() {
           $(this).children(".card-hover").removeClass('hide');
         })
-
         $(".card-look").on("mouseout", function() {
           $(this).children(".card-hover").addClass('hide');
         })
-
       });
     </script>
 <% end %>
+
 
 
   <%= link_to 'New Agency', new_agency_path %>

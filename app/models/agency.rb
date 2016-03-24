@@ -7,6 +7,9 @@ class Agency < ApplicationRecord
   has_many :references, dependent: :destroy
   has_many :quotes
 
+    include PgSearch
+
+
 
   after_create :enrich_github
 
@@ -27,6 +30,7 @@ class Agency < ApplicationRecord
   def short_description
     "#{self.description[0..140]} ..." unless self.description.nil?
   end
+  pg_search_scope :search_engine, against: [ :name, :description ]
 
 
   private

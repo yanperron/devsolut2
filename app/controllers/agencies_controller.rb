@@ -7,13 +7,21 @@ class AgenciesController < ApplicationController
   # GET /agencies
   def index
 
-    search_params = session['search_params']
+       search_params = session['search_params']
 @agencies_selected = []
 
 unless search_params.nil?
   @agencies_selected = search_params['agencies'].reject{|k,v| v == "0"}.keys if search_params['agencies']
 end
-   @agencies = Agency.all
+
+@agencies = Agency.all
+
+
+
+
+
+
+
 
 
 
@@ -29,6 +37,8 @@ end
     @agencies = Agency.where("description = ?", params[:what])
 
 
+
+
   end
 
 
@@ -36,6 +46,15 @@ end
   # GET /agencies/1
   def show
     @agency = Agency.find(params[:id])
+  end
+
+  def show_more
+
+        @agency = Agency.find(params[:id])
+         @agencies = Agency.where(agency_id: @agency.id)
+
+
+
   end
 
   # GET /agencies/new
@@ -72,9 +91,30 @@ end
 
   def compare
 
-    redirect_to @agencies_selected
+    session['search_params'] = params
 
+    @agencies = params[:agencies] || []
+
+    if
+      @agencies.length == 0
+      all_agencies = Agency.all
+      @agencies_name = ["-"]
+    else
+         agencies = @agencies.reject{|k,v| v == '0'}.keys
+      @agencies_name = agencies.map { |k,v| Agency.find(k).name }
+      all_agencies = Agency.includes(:agency).where(agency: agencies)
     end
+
+  end
+
+
+
+      #     end
+       #  end
+
+
+
+
 
 
 
@@ -97,3 +137,4 @@ end
     end
 
 end
+

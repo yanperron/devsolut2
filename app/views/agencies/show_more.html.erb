@@ -1,3 +1,6 @@
+
+
+
 <p id="notice"><%= notice %></p>
 
 
@@ -10,7 +13,7 @@
   <% @agencies.each do |agency| %>
   <%= cl_image_tag agency.photo, width: 300, height:  100, crop: :pad %>
   <h2><%= agency.name %></h2>
-  <p> <%= agency.short_description %></p>
+  <p> <%= agency.description %></p>
   <div class="stars">
     <% agency.review_mean.to_i.times do %>
       <i class="fa fa-star"></i>
@@ -20,13 +23,3 @@
 </div>
 
 </div>
-
-
-
-
-
-<br>
-      <%= link_to 'Compare', compare_agencies_path, class: "btn btn-danger" %>
-
-
-<%= link_to 'New Agency', new_agency_path %>
