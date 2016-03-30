@@ -1,35 +1,23 @@
 class AgenciesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:compare, :index, :show]
+  skip_before_action :authenticate_user!, only: [:compare, :index, :show, :add_wishlist]
 
-  before_action :set_agency, only: [:show, :edit, :update, :destroy]
+  before_action :set_agency, only: [:show, :edit, :update, :destroy,:add_wishlist]
 
   # GET /agencies
   def index
 
-       search_params = session['search_params']
-@agencies_selected = []
+    search_params = session['search_params']
+    @agencies_selected = []
 
-unless search_params.nil?
-  @agencies_selected = search_params['agencies'].reject{|k,v| v == "0"}.keys if search_params['agencies']
-end
-
-@agencies = Agency.all
-
-
-
-
+    unless search_params.nil?
+      @agencies_selected = search_params['agencies'].reject{|k,v| v == "0"}.keys if search_params['agencies']
+    end
+    @agencies = Agency.all
   end
 
   def search
-
-
-
     @agencies = Agency.where("description = ?", params[:what])
-
-
-
-
   end
 
 
@@ -43,9 +31,22 @@ end
 
         @agency = Agency.find(params[:id])
          @agencies = Agency.where(agency_id: @agency.id)
+  end
 
 
-
+  def add_wishlist
+    if current_user.nil?
+      redirect_to agency_path, alert: "Connectez-vous pour ajouter à votre wishlist"
+    else
+      wish = Wishlist.new
+      wish.user = current_user
+      wish.agency = @agency
+      if wish.save
+        redirect_to agency_path, notice: "L'agence est maintenant dans votre wishlist"
+      else
+        redirect_to agency_path, alert: "Une erreur est survenu"
+      end
+    end
   end
 
   # GET /agencies/new

@@ -13,9 +13,12 @@ Rails.application.routes.draw do
       post 'search', to: "agencies#search"
       get 'show_more', to: "agencies#show_more"
       post 'show_more', to: "agencies#show_more"
-
-
     end
+
+    member do
+      post "add_wishlist"
+    end
+
     resources :reviews, only: [:new, :create]
     resources :references, only: [:new, :create]
     resources :quotes, only: [:new, :create]
@@ -29,7 +32,6 @@ Rails.application.routes.draw do
 
   devise_for :users
     resources :users do
-    resources :wishlists, only: [:index ,:new, :create, :edit, :update]
   end
 
 

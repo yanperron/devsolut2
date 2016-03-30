@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-
   end
 
   def edit
@@ -13,13 +12,12 @@ class UsersController < ApplicationController
   end
 
   def update
-       @user = User.find(params[:id])
+   @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to @user, notice: 'Profil was successfully updated.'
+      redirect_to @user, alert: 'Profil was successfully updated.'
     else
       render :edit
-
     end
 
   end

@@ -1,14 +1,13 @@
-class WishlistsController < InheritedResources::Base
+class WishlistsController < ApplicationController
 
-before_action :set_user, only: [:index ,:new, :create, :edit, :update]
+skip_before_action :authenticate_user!, only: [:create]
+before_action :set_user, only: [:index, :edit, :update]
 
-def index
-  @wishlists = Wishlist.all
-
+  def index
+    @wishlists = Wishlist.all
   end
 
-
- def new
+  def new
     @wishlist = Wishlist.new
   end
 
@@ -48,8 +47,9 @@ def index
     @user = User.find(current_user.id)
   end
 
-    def wishlist_params
-      params.require(:wishlist).permit(:agency_id, :user_id)
-    end
+  def wishlist_params
+    params.require(:wishlist).permit(:agency_id)
+  end
+
 end
 
