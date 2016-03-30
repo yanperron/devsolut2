@@ -1,8 +1,10 @@
 class User < ApplicationRecord
+
+    mount_uploader :photo, PhotoUploader
+
   has_many :agencies, dependent: :destroy
-  has_many :reviews
-  has_many :quotes
-  mount_uploader :photo, PhotoUploader
+  has_many :reviews, dependent: :destroy
+  has_many :quotes, dependent: :destroy
 
 
   # Include default devise modules. Others available are:

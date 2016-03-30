@@ -5,7 +5,8 @@ class Agency < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :references, dependent: :destroy
-  has_many :quotes
+  has_many :quotes, dependent: :destroy
+  has_many :wishlists
 
     include PgSearch
 

@@ -52,6 +52,16 @@
       <div class="col-xs-12 col-md-4" id="description2">
         <div class ="padded-product text-center">
           <%= link_to 'Ask for a quote', new_agency_quote_path(@agency), :class => "btn btn-danger" %>
+
+          <%= form_tag user_wishlists_path(current_user.id), method: :post do %>
+            <div class="text-center">
+        <input type="submit" value="Ajouter a ca wishlist" class="btn navbar-wagon-button looks-cta">
+      </div>
+
+          <% end %>
+
+                    <%= link_to ' Ajouter a ca wishlist', new_user_wishlist_path(@agency), :class => "btn btn-danger" %>
+
         </div>
         <br>
         <div class="col-xs-12 col-md-12" id="description3">
