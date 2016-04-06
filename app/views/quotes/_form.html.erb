@@ -5,10 +5,13 @@
       <%= simple_form_for [@agency, @quote] do |f| %>
       <%= f.error_notification %>
 
+
       <div class="form-inputs">
         <%= f.input :email, label: "Votre email", placeholder: 'zuck@facebook.com' %>
         <%= f.input :titre, label: "Projet" %>
         <%= f.input :description, label: "Cahier des charges" %>
+        <%= f.input :pdf %>
+
       </div>
 
       <div class="form-actions">

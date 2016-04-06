@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wishlists !!!!!</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @wishlists.each do |wishlist| %>
+
+
+    <%= wishlist.agency.photo %>
+    <%= wishlist.agency.name %>
+    <%= wishlist.agency.description %>
+
+      <% end %>
+
+
+  </tbody>
+   <tr>
+      </tr>
+</table>
+
+<br>
+

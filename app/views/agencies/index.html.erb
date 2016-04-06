@@ -27,6 +27,65 @@
 
   <br>
 
+  <%= form_tag compare_agencies_path, method: :get do %>
+
+<div class="container">
+        <div class="row">
+          <% @agencies.each do |agency| %>
+              <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="card-look" >
+                  <div class="card-name"><%= agency.name %> </div>
+
+                  <div class="card-hover hide">
+                    <!--     <p>Je suis une super look qui déchire </p> -->
+                    <p><span><%= agency.description %></span></p>
+                  </div>
+                  <div class="card-check <%= 'hide' unless @agencies_selected.include?(agency.id.to_s) %>">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <input type="hidden" name="agencies[<%= agency.id.to_s %>]" value="<%= @agencies_selected.include?(agency.id.to_s) ? '1' : '0' %>">
+                </div>
+              </div>
+          <%end %>
+        </div>
+      </div>
+
+          <div class="text-center">
+        <input type="submit" value="Je découvre" class="btn navbar-wagon-button looks-cta">
+      </div>
+
+  <% end %>
+
+  </div>
+
+
+
+
+
+
+
+    <% content_for :after_js do %>
+    <script>
+      $(function(){
+        $('.card-look').click(function() {
+          $(this).children(".card-check").toggleClass('hide');
+          var el = $(this).children('input[type=hidden]');
+          el.val(el.val() == 0 ? 1 : 0);
+        });
+        $(".card-look").on("mouseover", function() {
+          $(this).children(".card-hover").removeClass('hide');
+        })
+        $(".card-look").on("mouseout", function() {
+          $(this).children(".card-hover").addClass('hide');
+        })
+      });
+    </script>
+<% end %>
+
+
+
   <%= link_to 'New Agency', new_agency_path %>
+  <%= link_to 'Compare', compare_agencies_path, class: "btn btn-danger" %>
+
 
 </div>

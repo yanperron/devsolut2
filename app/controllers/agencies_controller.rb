@@ -1,15 +1,26 @@
 class AgenciesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:compare, :index, :show, :search]
+<<<<<<< HEAD
+  skip_before_action :authenticate_user!, only: [:compare, :index, :show, :add_wishlist]
 
-  before_action :set_agency, only: [:show, :edit, :update, :destroy]
+  before_action :set_agency, only: [:show, :edit, :update, :destroy, :add_wishlist]
+
+
 
   # GET /agencies
   def index
+
+    search_params = session['search_params']
+    @agencies_selected = []
+
+    unless search_params.nil?
+      @agencies_selected = search_params['agencies'].reject{|k,v| v == "0"}.keys if search_params['agencies']
+    end
     @agencies = Agency.all
   end
 
   def search
+
     condition = case params[:what]
     when "web" then { does_web_development: true }
     when "mobile" then { does_mobile_development: true }
@@ -18,12 +29,16 @@ class AgenciesController < ApplicationController
     @agencies = Agency.where(condition)
   end
 
+
+
   # GET /agencies/1
   def show
     @agency = Agency.find(params[:id])
     @github_report = @agency.github_reports.last
     @linkedin_report = @agency.linkedin_reports.last
   end
+
+
 
   # GET /agencies/new
   def new
@@ -40,6 +55,7 @@ class AgenciesController < ApplicationController
 
 
     if @agency.save
+      AgencyMailer.create(@agency).deliver_now
       redirect_to @agency, notice: 'Agency was successfully created.'
     else
       render :new
@@ -58,12 +74,36 @@ class AgenciesController < ApplicationController
   end
 
   def compare
-    ids = params[:ids].split(',')
-    @agencies = []
-    ids.each do |id|
-      @agencies << Agency.find(id)
+
+    session['search_params'] = params
+
+    @agencies = params[:agencies] || []
+
+    if
+      @agencies.length == 0
+      all_agencies = Agency.all
+      @agencies_name = ["-"]
+    else
+         agencies = @agencies.reject{|k,v| v == '0'}.keys
+      @agencies_name = agencies.map { |k,v| Agency.find(k).name }
+      all_agencies = Agency.includes(:agency).where(agency: agencies)
     end
+
   end
+
+
+
+
+
+      #     end
+       #  end
+
+
+
+
+
+
+
 
   # DELETE /agencies/1
   def destroy
@@ -83,3 +123,4 @@ class AgenciesController < ApplicationController
     end
 
 end
+

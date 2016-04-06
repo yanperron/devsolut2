@@ -10,6 +10,7 @@
 # Seed user
 Review.destroy_all
 User.destroy_all
+
 user1 = User.create!(email:"admin@admin.com", password: "admin@admin.com", photo: "http://t0.gstatic.com/images?q=tbn:ANd9GcQ4fto24q0e4zt_rsUjcIFmZ3SsnWEbeizSl0f4u69vjqP3dd8dksN8kWA", admin: true)
 user2 = User.create!(email:"exemple@admin.com", password: "12345678", photo: "http://t0.gstatic.com/images?q=tbn:ANd9GcQ4fto24q0e4zt_rsUjcIFmZ3SsnWEbeizSl0f4u69vjqP3dd8dksN8kWA")
 

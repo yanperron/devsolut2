@@ -11,6 +11,8 @@ class QuotesController < ApplicationController
   def create
     @quote = @agency.quotes.new(quote_params)
     if @quote.save!
+            QuoteMailer.send(@quote).deliver_now
+
       redirect_to @quote.agency, notice: 'Votre devis a été envoyé avec succès'
     else
       render @agency

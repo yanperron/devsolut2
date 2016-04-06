@@ -1,0 +1,80 @@
+<div class="profile-header-wrapper">
+      <div class="container profile-header-container text-center">
+        <div class="profile-header-infos">
+          <%= cl_image_tag @user.photo, width:  100, crop: :pad %>
+
+          <h1> <%= @user.first_name %> </h1>
+          <h2> <%= @user.last_name %>  </h2>
+        </div>
+
+        <div class="tabs">
+          <a class="tab active" href="#">
+            <h3>Profile</h3>
+
+          </a>
+           <a class="tab" href="#">
+            <h3>Inbox </h3>
+
+          </a>
+          <a class="tab" href="#">
+            <h3>Help ?</h3>
+
+          </a>
+          <a class="tab" href="#">
+            <h3>Wishlist</h3>
+
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+     <div class="row">
+            <div class="col-xs-12 col-md-8">
+      <div class="product">
+        <div class='product-upvote'>
+          <div class="product-arrow"></div>
+        </div>
+        <div class='product-body'>
+          <h3> <%= @user.last_name %> </h3>
+
+        </div>
+
+      </div>
+        <div class="product">
+        <div class='product-upvote'>
+          <div class="product-arrow"></div>
+        </div>
+        <div class='product-body'>
+          <h3> <%= @user.first_name %> </h3>
+
+        </div>
+
+      </div>
+        <div class="product">
+        <div class='product-upvote'>
+          <div class="product-arrow"></div>
+        </div>
+        <div class='product-body'>
+          <h3> <%= @user.email %> </h3>
+
+        </div>
+
+      </div>
+
+
+
+
+
+     </div>
+     <div class="col-xs-12 col-md-4">
+                <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-danger" %>
+
+    </div>
+    </div>
+    </div>
+
+
+
+

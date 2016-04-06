@@ -6,9 +6,14 @@ class Agency < ApplicationRecord
   belongs_to :user
   has_many :reviews, dependent: :destroy
   has_many :references, dependent: :destroy
-  has_many :quotes
+
+  has_many :quotes, dependent: :destroy
+  has_many :wishlists, dependent: :destroy
   has_many :linkedin_reports
   has_many :github_reports
+
+    include PgSearch
+
 
   after_save :enrich_github
   after_save :enrich_linkedin
@@ -28,6 +33,7 @@ class Agency < ApplicationRecord
   def short_description
     "#{self.description[0..140]} ..." unless self.description.nil?
   end
+  pg_search_scope :search_engine, against: [ :name, :description ]
 
 
   private

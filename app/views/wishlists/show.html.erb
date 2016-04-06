@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @wish.agency.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @wish.agency.description %>
+</p>
+
+<p>
+  <strong> Logo:</strong>
+  <%= @wish.agency.photo %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
+
+<%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
+<%= link_to 'Back', wishlists_path %>

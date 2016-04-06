@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311093220) do
+ActiveRecord::Schema.define(version: 20160405131045) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +47,15 @@ ActiveRecord::Schema.define(version: 20160311093220) do
     t.boolean  "does_web_development",    default: false, null: false
     t.boolean  "does_mobile_development", default: false, null: false
     t.index ["user_id"], name: "index_agencies_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.boolean  "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "github_reports", force: :cascade do |t|
@@ -125,11 +135,23 @@ ActiveRecord::Schema.define(version: 20160311093220) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "agency_id"
+    t.index ["agency_id"], name: "index_wishlists_on_agency_id", using: :btree
+    t.index ["user_id"], name: "index_wishlists_on_user_id", using: :btree
+  end
+
   add_foreign_key "agencies", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "github_reports", "agencies"
   add_foreign_key "linkedin_reports", "agencies"
   add_foreign_key "quotes", "agencies"
   add_foreign_key "references", "agencies"
   add_foreign_key "reviews", "agencies"
   add_foreign_key "reviews", "users"
+  add_foreign_key "wishlists", "agencies"
+  add_foreign_key "wishlists", "users"
 end

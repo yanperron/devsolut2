@@ -1,0 +1,25 @@
+
+
+
+<p id="notice"><%= notice %></p>
+
+
+
+
+
+<div class="padded">
+<h1 class="text-center">Vos agences :</h1>
+<div class="agency-card">
+  <% @agencies.each do |agency| %>
+  <%= cl_image_tag agency.photo, width: 300, height:  100, crop: :pad %>
+  <h2><%= agency.name %></h2>
+  <p> <%= agency.description %></p>
+  <div class="stars">
+    <% agency.review_mean.to_i.times do %>
+      <i class="fa fa-star"></i>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+</div>
