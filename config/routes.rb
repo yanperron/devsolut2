@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+     resources :users do
+      resources :messages, only: [ :new, :create]
+
+  end
+
 
 
   resources :agencies do
@@ -11,14 +16,21 @@ Rails.application.routes.draw do
       post "compare", to: "agencies#compare"
       get 'search', to: "agencies#search"
       post 'search', to: "agencies#search"
-      get 'show_more', to: "agencies#show_more"
-      post 'show_more', to: "agencies#show_more"
+
+
 
 
     end
+
+
+
+
+
     resources :reviews, only: [:new, :create]
     resources :references, only: [:new, :create]
     resources :quotes, only: [:new, :create]
+    resources :wishlists, only: [:index, :new, :create]
+
 
   end
 
@@ -28,9 +40,7 @@ Rails.application.routes.draw do
 #  end
 
   devise_for :users
-    resources :users do
-    resources :wishlists, only: [:index ,:new, :create, :edit, :update]
-  end
+
 
 
   root to: 'pages#home'

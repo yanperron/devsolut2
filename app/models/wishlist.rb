@@ -1,6 +1,6 @@
 class Wishlist < ApplicationRecord
 
 belongs_to :user
-has_many :agencies
+belongs_to :agency
 
 end

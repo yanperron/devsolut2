@@ -1,0 +1,19 @@
+
+
+<%= simple_form_for [@user, @message] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :content %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit  %>
+  </div>
+<% end %>
+
+
+
+
+  <!-- je te fais juste le code , user_messages tkt pas pour les div et leur nom :p je t aime -->

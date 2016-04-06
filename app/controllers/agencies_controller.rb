@@ -1,8 +1,8 @@
 class AgenciesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:compare, :index, :show]
+  skip_before_action :authenticate_user!, only: [:compare, :index, :show, :add_wishlist]
 
-  before_action :set_agency, only: [:show, :edit, :update, :destroy]
+  before_action :set_agency, only: [:show, :edit, :update, :destroy, :add_wishlist]
 
   # GET /agencies
   def index
@@ -39,14 +39,9 @@ end
     @agency = Agency.find(params[:id])
   end
 
-  def show_more
-
-        @agency = Agency.find(params[:id])
-         @agencies = Agency.where(agency_id: @agency.id)
 
 
 
-  end
 
   # GET /agencies/new
   def new
@@ -63,6 +58,7 @@ end
 
 
     if @agency.save
+      AgencyMailer.create(@agency).deliver_now
       redirect_to @agency, notice: 'Agency was successfully created.'
     else
       render :new

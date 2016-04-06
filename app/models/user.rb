@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :agencies, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :quotes, dependent: :destroy
+  belongs_to :wishlist, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
 
   # Include default devise modules. Others available are:

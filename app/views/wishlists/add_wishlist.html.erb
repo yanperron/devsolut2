@@ -1,9 +1,6 @@
-<h1>New Wishlist</h1>
-
-
 <p id="notice"><%= notice %></p>
 
-<h1>Wishlists !!!</h1>
+<h1>Wishlists</h1>
 
 <table>
   <thead>
@@ -15,8 +12,8 @@
   <tbody>
 
     <%= @wishlist.agency.photo %>
-    <%= @wishlist.agency.name %>
-    <%= @wishlist.agency.description %>
+      <%= @wishlist.agency.name %>
+        <%= @wishlist.agency.description %>
 
 
 
@@ -27,7 +24,3 @@
 
 <br>
 
-
-
-
-<%= link_to 'Back', wishlists_path %>

@@ -1,0 +1,8 @@
+  <% @messages.each do |message| %>
+        <div class="col-xs-12 col-md-4">
+        <%= link_to user_messages_path(@user) do %>
+
+          <%= render "messages/message", :message => message %>
+          <% end %>
+        </div>
+      <% end %>
