@@ -4,32 +4,21 @@ class AgenciesController < ApplicationController
 
   before_action :set_agency, only: [:show, :edit, :update, :destroy, :add_wishlist]
 
+
   # GET /agencies
   def index
 
-       search_params = session['search_params']
-@agencies_selected = []
+    search_params = session['search_params']
+    @agencies_selected = []
 
-unless search_params.nil?
-  @agencies_selected = search_params['agencies'].reject{|k,v| v == "0"}.keys if search_params['agencies']
-end
-
-@agencies = Agency.all
-
-
-
-
+    unless search_params.nil?
+      @agencies_selected = search_params['agencies'].reject{|k,v| v == "0"}.keys if search_params['agencies']
+    end
+    @agencies = Agency.all
   end
 
   def search
-
-
-
     @agencies = Agency.where("description = ?", params[:what])
-
-
-
-
   end
 
 
@@ -38,8 +27,6 @@ end
   def show
     @agency = Agency.find(params[:id])
   end
-
-
 
 
 

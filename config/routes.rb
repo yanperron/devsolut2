@@ -17,10 +17,8 @@ Rails.application.routes.draw do
       get 'search', to: "agencies#search"
       post 'search', to: "agencies#search"
 
-
-
-
     end
+
 
 
 

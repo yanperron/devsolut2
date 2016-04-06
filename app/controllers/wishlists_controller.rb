@@ -1,6 +1,7 @@
 class WishlistsController < ApplicationController
 
 skip_before_action :authenticate_user!, only: [:create]
+<<<<<<< HEAD
 before_action :set_agency, only: [:index ,:new, :edit, :update, :add_wishlist]
 
 def index
@@ -28,7 +29,12 @@ end
         redirect_to agency_path, alert: "Une erreur est survenu"
       end
     end
-  end
+
+before_action :set_user, only: [:index, :edit, :update]
+
+
+
+
 
   def show
     @wishlist = Wishlist.find(params[:id])
@@ -84,5 +90,6 @@ end
     def wishlist_params
       params.require(:wishlist).permit(:agency_id)
     end
+
 end
 
