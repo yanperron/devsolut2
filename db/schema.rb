@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160405131045) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,14 +35,17 @@ ActiveRecord::Schema.define(version: 20160405131045) do
     t.string   "name"
     t.text     "description"
     t.string   "address"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "user_id"
     t.string   "github_account"
     t.integer  "repos_public"
     t.integer  "total_stars"
     t.integer  "total_members"
     t.string   "photo"
+    t.string   "linkedin_account"
+    t.boolean  "does_web_development",    default: false, null: false
+    t.boolean  "does_mobile_development", default: false, null: false
     t.index ["user_id"], name: "index_agencies_on_user_id", using: :btree
   end
 
@@ -54,16 +58,39 @@ ActiveRecord::Schema.define(version: 20160405131045) do
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
+  create_table "github_reports", force: :cascade do |t|
+    t.integer  "agency_id"
+    t.integer  "repos_public"
+    t.integer  "total_stars"
+    t.integer  "total_members"
+    t.json     "languages"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["agency_id"], name: "index_github_reports_on_agency_id", using: :btree
+  end
+
+  create_table "linkedin_reports", force: :cascade do |t|
+    t.integer  "agency_id"
+    t.string   "size"
+    t.string   "specialities"
+    t.string   "industry"
+    t.string   "address"
+    t.string   "create_date"
+    t.string   "website"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["agency_id"], name: "index_linkedin_reports_on_agency_id", using: :btree
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.text     "titre"
     t.text     "description"
     t.string   "pdf"
-    t.integer  "user_id"
     t.integer  "agency_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "email"
     t.index ["agency_id"], name: "index_quotes_on_agency_id", using: :btree
-    t.index ["user_id"], name: "index_quotes_on_user_id", using: :btree
   end
 
   create_table "references", force: :cascade do |t|
@@ -119,8 +146,9 @@ ActiveRecord::Schema.define(version: 20160405131045) do
 
   add_foreign_key "agencies", "users"
   add_foreign_key "messages", "users"
+  add_foreign_key "github_reports", "agencies"
+  add_foreign_key "linkedin_reports", "agencies"
   add_foreign_key "quotes", "agencies"
-  add_foreign_key "quotes", "users"
   add_foreign_key "references", "agencies"
   add_foreign_key "reviews", "agencies"
   add_foreign_key "reviews", "users"

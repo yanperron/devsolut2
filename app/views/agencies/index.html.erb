@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+         <li> <%= link_to "Accueil", root_path %> </li>
+         <li class="active"><%= link_to "Toutes les agences", agencies_path  %> </li>
+</ol>
 
 <div class="agency-list">
   <div class="padded">
@@ -11,7 +14,7 @@
     </div>
       <% @agencies.each do |agency| %>
         <div class="col-xs-12 col-md-4">
-        <%= link_to agency_path(agency) do %>
+        <%= link_to agency_path(agency), class: 'link-agency-card' do %>
 
           <%= render "agencies/agency", :agency => agency %>
           <% end %>

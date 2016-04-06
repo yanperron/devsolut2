@@ -1,55 +1,39 @@
 .card-review{
-  position: relative;
-  height: 220px;
-  width:350px;
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  width: 350px;
+  justify-content: space-between;
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
-
-.card-avatar{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.card-star{
-  position: absolute;
-  top: 60px;
-  left: 10px;
-}
-
-.card-title{
-  position: absolute;
-  right: 10px;
-  top: 0px;
-}
-
-.card-quote{
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
-
-
-
 
 .agency-card img{
-  max-width: 300px;
+  max-width: 200px;
   max-height: 200px;
 }
 
 .agency-card{
-  background-color: #F7F7F7;
-  border: 1px solid #cfcfcf;
+  background-color: white;
+  border: 1px solid $gray-lighter;
   margin: 10px;
   padding: 10px;
   border-radius: 3px;
   box-shadow: 0 0 1px #cfcfcf;
   text-align: center;
-  width: 350px;
-  height: 280px;
+  min-height: 300px;
 }
 
 .agency-card:hover{
-  border: 3px solid #fe5f55;
+  border: 1px solid $gray-light;
+}
+
+a.link-agency-card {
+  text-decoration: none;
 }
 
 .agency-card a{
@@ -66,12 +50,11 @@
   margin-right: 30px;
 }
 
-.agency-card h2 {
-  font-size: 20px;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  color: #6f6e74;
-  height: 30px;
+.agency-card h2{
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+  color: $gray;
 }
 
 .agency-card p{

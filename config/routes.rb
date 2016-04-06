@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   ActiveAdmin.routes(self)
 
      resources :users do
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
       get 'search', to: "agencies#search"
       post 'search', to: "agencies#search"
 
+
     end
 
 
@@ -32,6 +34,11 @@ Rails.application.routes.draw do
 
   end
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
 #  require "sidekiq/web"
 #  authenticate :user, lambda { |u| u.admin } do
 #    mount Sidekiq::Web => '/sidekiq'
@@ -42,6 +49,7 @@ Rails.application.routes.draw do
 
 
   root to: 'pages#home'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process

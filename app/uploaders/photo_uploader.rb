@@ -9,7 +9,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   version :standard do
     resize_to_fit 400, 300
+  end
 
+  version :thumb_square do
+    resize_to_fit 120, 120
   end
 
 end

@@ -1,0 +1,25 @@
+<div class="card-review">
+  <div class="card-title">
+    <div class="card-title-agency">
+      <h4>
+      <%= link_to review.agency.name, agency_path(review.agency) %>
+      </h4>
+    </div>
+    <div class="card-title-stars stars">
+      <% review.star.to_i.times do %>
+      <i class="fa fa-star"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="quote-wrapper">
+      <p class="quote-start quote-tick">"</p>
+      <p class="quote-content"> <%= review.description %></p>
+      <p class="quote-end quote-tick">"</p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= image_tag review.user.photo.url(:thumb_square), class: "avatar card-avatar"  %>
+    <%= review.user.full_name %>
+  </div>
+</div>

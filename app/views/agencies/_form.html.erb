@@ -1,18 +1,37 @@
 
 
+
 <%= simple_form_for(@agency) do |f| %>
   <%= f.error_notification %>
 
+
   <div class="form-inputs">
+
+    <%= f.input :photo, label: "Votre Logo" %>
+
+
     <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id.to_s } %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :address %>
-    <%= f.input :photo %>
+    <%= f.input :address, label: "Adresse" %>
+
+
+    <div class="padded-sm">
+       <p class="form-advise">Augmenter votre visibilité grâce à votre compte LinkedIn</p>
+      <%= f.input :linkedin_account, label: "Adresse de votre page LinkedIn", placeholder: "https://www.linkedin.com/company/google" %>
+    </div>
+
+
+    <div class="padded-sm">
+      <p class="form-advise">Augmenter votre visibilité grâce à votre compte Github</p>
+      <%= f.input :github_account, label: "Adresse de votre compte Github ", placeholder: "https://github.com/facebook"%>
+    </div>
+
     <%= f.input :photo_cache, as: :hidden %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, value: "Enregistrer", class:"btn-primary pull-right" %>
+    <%= link_to 'Annuler', agencies_path, class:"btn btn-danger"%>
   </div>
 <% end %>

@@ -1,7 +1,9 @@
-<h1>New Quote</h1>
+<h1 class="text-center">Demander un devis</h1>
 
+<p class="text-center">Agence : <%= @agency.name %></p>
 <%= render 'form', quote: @quote %>
 
 <a href="http://res.cloudinary.com/roritobach/image/upload/v1456939128/Contrat_de_confientailité.pdf.pdf"> Votre contrat de confidentialité </a>
 
 <%= link_to 'Back', agencies_path(@agency), class: 'btn btn-default btn-xs' %>
+

@@ -1,8 +1,10 @@
 class AgenciesController < ApplicationController
 
+<<<<<<< HEAD
   skip_before_action :authenticate_user!, only: [:compare, :index, :show, :add_wishlist]
 
   before_action :set_agency, only: [:show, :edit, :update, :destroy, :add_wishlist]
+
 
 
   # GET /agencies
@@ -18,7 +20,13 @@ class AgenciesController < ApplicationController
   end
 
   def search
-    @agencies = Agency.where("description = ?", params[:what])
+
+    condition = case params[:what]
+    when "web" then { does_web_development: true }
+    when "mobile" then { does_mobile_development: true }
+    else {}
+    end
+    @agencies = Agency.where(condition)
   end
 
 
@@ -26,6 +34,8 @@ class AgenciesController < ApplicationController
   # GET /agencies/1
   def show
     @agency = Agency.find(params[:id])
+    @github_report = @agency.github_reports.last
+    @linkedin_report = @agency.linkedin_reports.last
   end
 
 
@@ -109,7 +119,7 @@ class AgenciesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def agency_params
-      params.require(:agency).permit(:name, :description, :address, :user_id, :where, :photo, :photo_cache)
+      params.require(:agency).permit(:name, :description, :address, :user_id, :where, :photo, :photo_cache, :linkedin_account, :github_account)
     end
 
 end
